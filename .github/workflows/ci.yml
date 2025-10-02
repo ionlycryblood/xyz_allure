@@ -28,14 +28,15 @@ jobs:
     - name: run test & allure
       run: pytest --alluredir=results
 
-    - name: generate allure report
-      run: allure generate allure-results -o allure-report
-
-    - name: get allure report
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{secrets.GITHUB_TOKEN}}
-        publish_dir: ./allure-report
-
+  generate_report:
+    runs-on: ubuntu-latest
+    needs: test
+    name: generate report
+    steps:
+      - uses: action/setup-java@v3
+        with:
+          distribution: 'microsoft'
+          java-version: '17'
+      - run: sudo wget
 
 
