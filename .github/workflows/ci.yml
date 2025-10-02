@@ -53,7 +53,7 @@ jobs:
         with:
           name: _site
           path:
-            -site
+            _site
           retention-days: 1
 
 
